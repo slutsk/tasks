@@ -1637,6 +1637,84 @@
 
 	 
 </div>
-</body>
 
+<script>
+    (function() {
+        // Получаем элементы
+        const textarea = document.getElementById('solvedIdsInput');
+        const button = document.getElementById('strikeBtn');
+
+        // Функция для извлечения acmp ID из текста ссылки
+        // Ищет паттерн [acmp XXXXX ...] и возвращает число XXXXX
+        function extractAcmpId(linkElement) {
+            const text = linkElement.textContent;
+            const match = text.match(/\[acmp\s+(\d+)/i);
+            if (match && match[1]) {
+                return parseInt(match[1], 10);
+            }
+            return null;
+        }
+
+        // Основная функция: зачёркивает задачи, чьи ID входят в введённый список
+        function strikeSolvedTasks() {
+            // Получаем строку из textarea, убираем лишние пробелы по краям
+            let idsString = textarea.value.trim();
+            if (idsString === "") {
+                // Если поле пустое — ничего не делаем (можно добавить предупреждение)
+                alert("Пожалуйста, введите хотя бы один ID через пробел.");
+                return;
+            }
+
+            // Разбиваем строку по пробелам и переводим в числа (убираем пустые)
+            const inputNumbers = idsString.split(/\s+/).map(Number).filter(n => !isNaN(n));
+            if (inputNumbers.length === 0) {
+                alert("Не удалось распознать числа. Введите ID через пробел, например: 1681 108 132");
+                return;
+            }
+
+            // Создаём Set для быстрого поиска
+            const solvedSet = new Set(inputNumbers);
+
+            // Находим все ссылки <a>, которые содержат текст вида [acmp ...]
+            // Но аккуратно: в блоке "Олимпиады" есть ссылка без [acmp], её не трогаем.
+            const allLinks = document.querySelectorAll('a');
+
+            let struckCount = 0;
+
+            allLinks.forEach(link => {
+                // Проверяем, содержит ли текст ссылки паттерн [acmp число
+                const id = extractAcmpId(link);
+                if (id !== null && solvedSet.has(id)) {
+                    // Добавляем класс зачёркивания к родительскому <li> (элементу списка)
+                    // Но в вашей структуре ссылка обёрнута в <li>, поэтому поднимаемся до <li>
+                    let listItem = link.closest('li');
+                    if (listItem) {
+                        // Добавляем класс, если ещё не добавлен
+                        if (!listItem.classList.contains('striked-task')) {
+                            listItem.classList.add('striked-task');
+                            struckCount++;
+                        }
+                    } else {
+                        // На всякий случай, если вдруг ссылка не внутри <li>, добавим класс самой ссылке
+                        if (!link.classList.contains('striked-task')) {
+                            link.classList.add('striked-task');
+                            struckCount++;
+                        }
+                    }
+                }
+            });
+
+            if (struckCount === 0) {
+                alert("Ни одна задача не содержит указанные ID. Проверьте правильность ввода.\n(Например, для задачи [acmp 1681 ...] нужно ввести 1681)");
+            } else {
+                console.log(`Зачёркнуто задач: ${struckCount}`);
+            }
+        }
+
+        // Вешаем обработчик на кнопку
+        button.addEventListener('click', strikeSolvedTasks);
+    })();
+</script>
+	
+</body>
 </html>
