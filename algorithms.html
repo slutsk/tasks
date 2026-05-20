@@ -34,12 +34,22 @@
 <div>
                        
 <pre><code class="language-cpp">
-#include \<iostream\>
 
-int main() {
-    std::cout << "Hello, World!" << std::endl;
-    return 0;
+#include &lt;iostream&gt;
+#include &lt;vector&gt;
+#include &lt;set&gt;
+using namespace std;
+
+int main()
+{
+    long long N, M, K, A, B, C;
+    cin &gt;&gt; N &gt;&gt; M &gt;&gt; K &gt;&gt; A &gt;&gt; B &gt;&gt; C;
+    long long mx = max({N*A, M*B, K*C});
+    if (mx == N * A) cout &lt;&lt; &quot;Conrad &quot;;
+    if (mx == M * B) cout &lt;&lt; &quot;Harold &quot;;
+    if (mx == K * C) cout &lt;&lt; &quot;Wilhelm &quot;;
 }
+	
 </code></pre>
                         
 						
