@@ -81,6 +81,24 @@
 </li>
 <!-- ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ -->
 
+<li class="question">
+<details>
+    <summary>
+        hash-функция
+    </summary>
+<div>
+<pre><code class="language-cpp">long long compute_hash(string const&amp; str, int p, int MOD = 1e9+7) {
+    long long hash = 0;
+    for (auto c : str) 
+        hash = (hash*p + (c - 'a' + 1) ) % MOD;
+    return hash;
+}
+</code></pre>
+</div>
+</details>
+</li>
+<!-- ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ -->
+
 
 <!-- FINISH#FINISH#FINISH#FINISH#FINISH#FINISH#FINISH#FINISH#FINISH#FINISH#FINISH#FINISH#FINISH#FINISH -->
 </ol>
