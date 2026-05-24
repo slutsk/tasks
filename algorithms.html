@@ -99,6 +99,27 @@
 </li>
 <!-- ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ -->
 
+<!-- ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ -->
+
+<li class="question">
+<details>
+    <summary>
+        Префиксные хеши
+    </summary>
+<div>
+<pre><code class="language-cpp">vector<int> compute_prefix_hashes(const string& s, int p = 257, int MOD = 1e9+7 ) {
+    vector<int> pref = { 0 };
+    for (auto c : s)
+        pref.push_back((1ll*pref.back()*p + c)%MOD);
+    return pref;
+}
+
+</code></pre>
+</div>
+</details>
+</li>
+<!-- ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ -->
+
 
 <!-- FINISH#FINISH#FINISH#FINISH#FINISH#FINISH#FINISH#FINISH#FINISH#FINISH#FINISH#FINISH#FINISH#FINISH -->
 </ol>
