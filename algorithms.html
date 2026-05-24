@@ -87,10 +87,10 @@
         hash-функция
     </summary>
 <div>
-<pre><code class="language-cpp">int compute_hash(string const&amp; str, int p, int MOD = 1e9+7) {
+<pre><code class="language-cpp">int compute_hash(const string &amp; str, int p = 257, int MOD = 1e9+7) {
     long long hash = 0;
     for (auto c : str) 
-        hash = (hash*p + (c - 'a' + 1) ) % MOD;
+        hash = (hash*p + int(c) ) % MOD;
     return (int) hash;
 }
 </code></pre>
