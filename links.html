@@ -33,19 +33,7 @@
         Буславский А. А.
     </summary>
 <div>
-<pre><code class="language-cpp">vector<int> get_prefix_function(const string& s)
-{
-    vector<int> pref(s.size());
-    for (int i = 1; i < s.size(); i++)
-    {
-        int j = pref[i - 1];  
-        while (j > 0 && s[i] != s[j])
-            j = pref[j - 1];
-        if (s[i] == s[j])
-            pref[i] = j + 1;
-    }
-    return pref;
-} 
+
 </code></pre>
 </div>
 </details>
