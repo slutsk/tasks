@@ -1,1 +1,62 @@
+<!DOCTYPE html>
+<html lang="ru">
 
+<head>
+    <meta charset="UTF-8">
+    <title>Алгоритмы</title>
+    <link rel="stylesheet" href="css.css">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github.min.css">
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+	<script>hljs.highlightAll();</script>
+	
+</head>
+
+<body>
+ <div class="main">
+ 
+  <h1> Задачи по олимпиадному программированию</h1>
+    
+    <!-- НАВИГАЦИОННЫЕ ССЫЛКИ (ДОБАВЛЕНЫ СВЕРХУ) -->
+    <div class="nav-links">
+        <a href="index.html">Блок 1</a>
+        <a href="block2.html">Блок 2</a>
+        <a href="olympiads.html">Олимпиады</a>
+		<a href="algorithms.html">Алгоритмы</a>
+    </div>
+
+<ol>
+<!-- Буславский# Буславский # Буславский# Буславский# Буславский# Буславский# Буславский# Буславский# Буславский# --->		
+
+<li class="question">
+<details>
+    <summary>
+        Буславский А. А.
+    </summary>
+<div>
+<pre><code class="language-cpp">vector<int> get_prefix_function(const string& s)
+{
+    vector<int> pref(s.size());
+    for (int i = 1; i < s.size(); i++)
+    {
+        int j = pref[i - 1];  
+        while (j > 0 && s[i] != s[j])
+            j = pref[j - 1];
+        if (s[i] == s[j])
+            pref[i] = j + 1;
+    }
+    return pref;
+} 
+</code></pre>
+</div>
+</details>
+</li>
+<!-- ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ -->	
+
+
+
+<!-- FINISH#FINISH#FINISH#FINISH#FINISH#FINISH#FINISH#FINISH#FINISH#FINISH#FINISH#FINISH#FINISH#FINISH -->
+</ol>
+ 
+ </div>
+</body>
+</html>
