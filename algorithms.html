@@ -52,6 +52,36 @@
 <li class="question">
 <details>
     <summary>
+        Различные делители числа
+    </summary>
+<div>
+<pre><code class="language-cpp">vector<int> get_divisors(int n)
+{
+    vector<int> divisors;
+    int d = 1;
+    while (d * d < n)
+    {
+        if (n % d == 0) {
+            divisors.push_back(d);
+            divisors.push_back(n / d);
+        }
+        d++;
+    }
+    if (d * d == n)
+        divisors.push_back(d);
+    return divisors;
+}
+</code></pre>
+</div>
+</details>
+</li>
+<!-- ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ -->	
+
+<!-- START#START#START#START#START#START#START#START#START#START#START#START#START#START#--->		
+
+<li class="question">
+<details>
+    <summary>
         Проверка числа на простоту
     </summary>
 <div>
