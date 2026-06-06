@@ -32,6 +32,26 @@
 <li class="question">
 <details>
     <summary>
+        Минимальный делитель числа, не равный единице
+    </summary>
+<div>
+<pre><code class="language-cpp">int find_min_divisor(int n)
+{
+    int d = 2;
+    while (d*d <= n && n % d) d++;
+    return d;
+}
+</code></pre>
+</div>
+</details>
+</li>
+<!-- ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ -->	
+	
+<!-- START#START#START#START#START#START#START#START#START#START#START#START#START#START#--->		
+
+<li class="question">
+<details>
+    <summary>
         Проверка числа на простоту
     </summary>
 <div>
