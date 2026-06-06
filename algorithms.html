@@ -97,6 +97,36 @@
 </div>
 </details>
 </li>
+<!-- ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ -->	
+
+<!-- START#START#START#START#START#START#START#START#START#START#START#START#START#START#--->		
+
+<li class="question">
+<details>
+    <summary>
+        Разложение числа на простые множители (факторизация)
+    </summary>
+<div>
+<pre><code class="language-cpp">vector<int> factorize(int n)
+{
+    vector<int> fact;
+    int d = 2;
+    while (d * d <= n)
+    {
+        while (n % d == 0) {
+            fact.push_back(d);
+            n /= d;
+        }
+        d++;
+    }
+    if (n > 1)
+        fact.push_back(n);
+    return fact;
+}
+</code></pre>
+</div>
+</details>
+</li>
 <!-- ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ -->		
 	
 <!-- START#START#START#START#START#START#START#START#START#START#START#START#START#START#--->		
