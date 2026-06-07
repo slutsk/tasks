@@ -248,7 +248,7 @@ vector<int> dist(n, INF);
 // Реализация с использованием бинарной кучи (priority_queue)
 vector<int> dist(n, INF);
     dist[strt] = 0;
-    priority_queue<pair<int, int>> PQ;
+    priority_queue&lt;pair&lt;int, int&gt;&gt; PQ;
     PQ.push({0, strt});
 
     while (!PQ.empty())
