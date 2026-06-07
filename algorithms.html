@@ -244,6 +244,33 @@ vector<int> dist(n, INF);
             }
         }
     }
+
+// Реализация с использованием бинарной кучи (priority_queue)
+vector<int> dist(n, INF);
+    dist[strt] = 0;
+    priority_queue<pair<int, int>> PQ;
+    PQ.push({0, strt});
+
+    while (!PQ.empty())
+    {
+        int d = -PQ.top().first;
+        int vertex = PQ.top().second;
+        PQ.pop();
+        
+        if (dist[vertex] != d)
+            continue;
+
+        for (auto p : gr[vertex])
+        {
+            int u = p.first;
+            int w = p.second;
+            if (dist[u] > dist[vertex] + w)
+            {
+                dist[u] = dist[vertex] + w;
+                PQ.push({-dist[u], u});
+            }
+        }
+    }
 </code></pre>
 </div>
 </details>
