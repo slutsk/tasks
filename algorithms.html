@@ -222,6 +222,28 @@ for (int i = 0; i < n; i++)
         }
     }
 }
+
+// Реализация на set (для разреженных графов)
+vector<int> dist(n, INF);
+    dist[strt] = 0;
+    set<pair<int, int>> st;
+    st.insert({0, strt});
+    while (!st.empty())
+    {
+        int vertex = st.begin()->second;
+        st.erase(st.begin());
+        for (auto p : gr[vertex])
+        {
+            int u = p.first;
+            int w = p.second;
+            if (dist[u] > dist[vertex] + w)
+            {
+                st.erase({dist[u], u});
+                dist[u] = dist[vertex] + w;
+                st.insert({dist[u], u});
+            }
+        }
+    }
 </code></pre>
 </div>
 </details>
