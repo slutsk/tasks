@@ -109,7 +109,7 @@
 <div>
 <pre><code class="language-cpp">vector<bool> sieveOfEratosthenes(int n) // n >= 2
 {
-    vector<bool> flags(n, true);
+    vector<bool> flags(n + 1, true);
     flags[0] = flags[1] = false;
     for (int i = 2; i * i <= n; i++)
         if (flags[i])
