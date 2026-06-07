@@ -192,7 +192,8 @@ int gcd(int a, int b)
         Алгоритм Дейкстры
     </summary>
 <div>
-<pre><code class="language-cpp">vector<int> dist(n, INF);
+<pre><code class="language-cpp">//Квадратичная реализация алгоритма
+vector<int> dist(n, INF);
 vector<bool> visit(n);
 dist[start] = 0;
 
