@@ -99,6 +99,31 @@
 </li>
 <!-- ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ -->	
 
+	<!-- START#START#START#START#START#START#START#START#START#START#START#START#START#START#--->		
+
+<li class="question">
+<details>
+    <summary>
+       Решето Эратосфена
+    </summary>
+<div>
+<pre><code class="language-cpp">vector<bool> sieveOfEratosthenes(int n) // n >= 2
+{
+    vector<bool> flags(n, true);
+    flags[0] = flags[1] = false;
+    for (int i = 2; i * i <= n; i++)
+        if (flags[i])
+            for (int j = i * i; j < n; j += i)
+                flags[j] = false;
+    return flags;
+}
+
+</code></pre>
+</div>
+</details>
+</li>
+<!-- ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ -->	
+
 <!-- START#START#START#START#START#START#START#START#START#START#START#START#START#START#--->		
 
 <li class="question">
