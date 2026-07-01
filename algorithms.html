@@ -195,17 +195,20 @@ int gcd(int a, int b)
 <div>
 <pre><code class="language-cpp">#include &lt;iostream&gt;
 int extended_gcd(int a, int b, int &amp;x, int &amp;y) {
-    if (b == 0) {
+    
+	if (b == 0) {
         x = 1;
         y = 0;
         return a;
     }
-    long long x1, y1;
-    long long gcd = extended_gcd(b, a % b, x1, y1);
+    
+	int x1, y1;
+    int gcd = extended_gcd(b, a % b, x1, y1);
     
     x = y1;
     y = x1 - (a / b) * y1;
-    return gcd;
+    
+	return gcd;
 } 
 </code></pre>
 </div>
