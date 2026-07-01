@@ -201,8 +201,8 @@ int extended_gcd(int a, int b, int &amp;x, int &amp;y) {
         y = 0;
         return a;
     }
-    
-	int x1, y1;
+        
+    int x1, y1;
     int gcd = extended_gcd(b, a % b, x1, y1);
     
     x = y1;
