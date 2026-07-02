@@ -37,10 +37,9 @@
 <div>
 <pre><code class="language-cpp">int find_min_divisor(int n)
 {
-    int d = 2;
-    while (d*d <= n && n % d) d++;
-    if(n%d) return n;
-    return d;
+    for(int i = 2; i*i <= n; i++)
+        if(n%i == 0) return i;
+    return n; 
 }
 </code></pre>
 </div>
