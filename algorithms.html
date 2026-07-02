@@ -258,6 +258,33 @@ void selection_sort(vector&lt;int&gt;&amp; a)
 <li class="question">
 <details>
     <summary>
+       сортировка вставкой (вставками) (Insertion sort)
+    </summary>
+<div>
+<pre><code class="language-cpp">void insertion_sort(vector&lt;int&gt;&amp; a)
+{
+    int n = a.size();
+    for(int i = 1; i &lt; n; i++) {
+        int key = a[i];
+        int j = i - 1;
+        while(j &gt;= 0 &amp;&amp; a[j] &gt; key) {
+            a[j + 1] = a[j];
+            j--;
+        }
+        a[j + 1] = key;
+    }
+}
+</code></pre>
+</div>
+</details>
+</li>
+<!-- ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ -->	
+				
+<!-- START#START#START#START#START#START#START#START#START#START#START#START#START#START#--->		
+
+<li class="question">
+<details>
+    <summary>
         Алгоритм Дейкстры
     </summary>
 <div>
