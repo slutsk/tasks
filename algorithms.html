@@ -279,6 +279,31 @@ void selection_sort(vector&lt;int&gt;&amp; a)
 </details>
 </li>
 <!-- ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ -->	
+
+<!-- START#START#START#START#START#START#START#START#START#START#START#START#START#START#--->		
+
+<li class="question">
+<details>
+    <summary>
+       Пузырьковая сортировка (Bubble sort)
+    </summary>
+<div>
+<pre><code class="language-cpp">void bubble_sort(vector&lt;int&gt;&amp; a)
+{
+    int n = a.size();
+    for(int i = 0; i &lt; n - 1; i++) {
+        for(int j = 0; j &lt; n - i - 1; j++) {
+            if(a[j] &gt; a[j + 1]) {
+                swap(a[j], a[j + 1]);
+            }
+        }
+    }
+}
+</code></pre>
+</div>
+</details>
+</li>
+<!-- ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ -->	
 				
 <!-- START#START#START#START#START#START#START#START#START#START#START#START#START#START#--->		
 
