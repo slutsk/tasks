@@ -2429,7 +2429,7 @@
     <p>© 2026 Владислав Шацкий (г. Слуцк)</p>
 </footer>
 
-	<script>
+<script>
     (function() {
         // Получаем элементы
         const textarea = document.getElementById('solvedIdsInput');
@@ -2440,13 +2440,18 @@
         if (!statsElement && button) {
             statsElement = document.createElement('div');
             statsElement.id = 'solvedStats';
-            statsElement.style.marginTop = '30px';
+            statsElement.style.marginTop = '10px';
             statsElement.style.fontWeight = 'bold';
             button.insertAdjacentElement('afterend', statsElement);
         }
 
-        // Функция для извлечения acmp ID из текста ссылки
+        // Функция для извлечения acmp ID
         function extractAcmpId(linkElement) {
+            // Сначала пробуем взять из data-атрибута
+            if (linkElement.dataset.acmpId) {
+                return parseInt(linkElement.dataset.acmpId, 10);
+            }
+            // Если нет — из текста
             const text = linkElement.textContent;
             const match = text.match(/\[acmp\s+(\d+)/i);
             if (match && match[1]) {
@@ -2455,7 +2460,7 @@
             return null;
         }
 
-        // Функция для правильного склонения слов ("задача", "задачи", "задач")
+        // Функция для правильного склонения и подсчёта процентов
         function formatSolvedText(solved, total) {
             const absSolved = Math.abs(solved) % 100;
             const lastDigit = absSolved % 10;
@@ -2467,7 +2472,17 @@
             }
 
             const verb = (lastDigit === 1 && absSolved !== 11) ? 'Решена' : 'Решено';
-            return `${verb} ${solved} ${word} из ${total}`;
+            
+            // Вычисляем процент (защита от деления на ноль)
+            let percent = 0;
+            if (total > 0) {
+                percent = (solved / total) * 100;
+            }
+            
+            // Округляем до сотых и убираем лишние нули (например, 50.00 -> 50, 12.50 -> 12.5)
+            let percentStr = percent.toFixed(2).replace(/\.?0+$/, '');
+            
+            return `${verb} ${solved} ${word} из ${total} (${percentStr}%)`;
         }
 
         // Функция подсчёта общего количества и уже зачёркнутых задач
@@ -2495,6 +2510,7 @@
 
         // Основная функция: зачёркивает задачи, чьи ID входят в введённый список
         function strikeSolvedTasks() {
+            // Если поле ввода скрыто, берём значение из prompt или из localStorage (по желанию)
             let idsString = textarea.value.trim();
             if (idsString === "") {
                 alert("Пожалуйста, введите хотя бы один ID через пробел.");
@@ -2542,9 +2558,12 @@
         // Инициализируем счётчик сразу при загрузке страницы
         updateStats();
 
-        button.addEventListener('click', strikeSolvedTasks);
+        // Если кнопка есть, вешаем обработчик
+        if (button) {
+            button.addEventListener('click', strikeSolvedTasks);
+        }
     })();
-</script>
+</script>	
 	
 </body>
 </html>
